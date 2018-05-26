@@ -1,61 +1,43 @@
-<table class="table">
-  <thead class="thead-dark">
+<h1 id="main_h1" style="margin-left:0px;font-size: 48px;">Tickets</h1>
+
+<table class="table" ng-if="displayTickets">
+  <thead class="">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">#ID</th>
+      <th scope="col">Number of Lines</th>
+      <th scope="col">View Ticket</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+    <tr ng-repeat="ticket in tickets">
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.number_of_lines}}</td>
+      <td><button type="button" class="btn btn-success" ng-click="openTicket(ticket)">View</button></td>
     </tr>
   </tbody>
 </table>
 
-<table class="table">
-  <thead class="thead-light">
+<table class="table" ng-if="displayLines">
+  <thead class="">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">#ID</th>
+      <th scope="col">Number One</th>
+      <th scope="col">Number Two</th>
+      <th scope="col">Number Three</th>
+      <th scope="col">Result</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+    <tr ng-repeat="ticket in tickets">
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.id}}</td>
+      <td ng-if="line.result">{{line.result}}</td>
+      <td ng-if="!line.result"><button type="button" class="btn btn-success" ng-click="">Get Result</button></td>
     </tr>
   </tbody>
 </table>
+
+<button id="" type="button" ng-if="displayTickets" class="btn btn-info float-right" ng-click="goHome('/')">Back</button>
+<button id="" type="button" ng-if="displayLines" class="btn btn-info float-right" ng-click="swapViews()">Back</button>

@@ -3,11 +3,15 @@
     src: url(../fonts/AbrilFatface-Regular.otf);
 }
 
+.home {
+  font-size: 48px;
+}
+
 body {
     width:100%;
     background: black;
     font-family: Abril Fatface, serif;
-    font-size: 48px;
+
     /* Multi broswer support transparency detail */
     background-image: -webkit-linear-gradient(top, 
         rgba(0,0,0,0.35) 20%, 
@@ -67,14 +71,14 @@ body {
 }
 
 .container {
-    padding-left: 20%;
+    padding-left: 12%;
 }
 
 .row {
     margin-top:10%;
 }
 
-h1 {
+#main_h1 {
     color: deepskyblue;
     width:80%;
     margin-left: 8%;
@@ -82,7 +86,7 @@ h1 {
     font-size: 1.2em;
 }
 
-h3 {
+#main_h3 {
     color: white;
     width:80%;
     margin-left: 8%;
@@ -91,8 +95,12 @@ h3 {
 }
 
 /*Buttons*/
-.btn-info {
+#main_btn.btn-info {
     font-size: 0.5em;
+    width:225px;
+    height:25%;
+    margin-left: 5%;
+    margin-bottom:20px;
 }
 
 /*Nav Bar*/
@@ -106,10 +114,8 @@ h3 {
     color: lightskyblue;
 }
 
-/*Bootstrap Overrides*/
-.btn-info {
-    width:225px;
-    height:25%;
-    margin-left: 5%;
-    margin-bottom:20px;
+/*Table styles*/
+.table {
+  font-family: 'arial';
+  color: white;
 }

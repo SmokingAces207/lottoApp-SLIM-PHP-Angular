@@ -1,9 +1,14 @@
-<h1>Lotto App</h1>
-<h3>Create a new ticket or view old tickets...
- <br>Play Lotto - It Could be You!
-</h3>
+<div class="home">
+	
+	<h1 id="main_h1">Lotto App</h1>
+	<h3 id="main_h3">Create a new ticket or view old tickets...
+	 <br>Play Lotto - It Could be You!
+	</h3>
 
-<h5 ng-if="tickets">{{tickets}}</h5>
+	<h5 ng-if="tickets">{{tickets}}</h5>
 
-<button type="button" class="btn btn-info" ng-click="createNewTicket()">New Ticket</button>
-<button type="button" class="btn btn-info" ng-click="viewTickets()">View Tickets</button>
+	<button id="main_btn" type="button" class="btn btn-info" ng-click="createNewTicket()">New Ticket</button>
+	<button id="main_btn" type="button" class="btn btn-info" ng-click="viewTickets('/viewtickets')">View Tickets</button>
+
+</div>
+

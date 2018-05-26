@@ -18,7 +18,7 @@ myApp.config(function($routeProvider) {
 		.otherwise({ redirectTo: '/' });   
 });
 
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($scope, $filter, $http) {
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$location', function ($scope, $filter, $http, $location) {
     
     $scope.number_of_lines = 6;
     
@@ -43,8 +43,8 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
         console.log("create ticket");
         console.log($scope.data);
     }
-    
-    $scope.viewTickets = function() {
+
+    $scope.getTickets = function() {
 
         $http({
             method: 'GET',
@@ -59,12 +59,45 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
         }
         console.log("view tickets");
     }
-
-    $scope.viewTickets();
+    
+    $scope.viewTickets = function($path) {
+        $scope.getTickets();
+        console.log($location.path());
+        $location.url($path);
+    }
     
 }]);
 
-myApp.controller('ticketController', ['$scope', function ($scope) {
+myApp.controller('ticketController', ['$scope', '$location', function ($scope, $location) {
+
+    $scope.displayTickets = true;
+    $scope.displayLines = false;
+
+    $scope.tickets = {
+        1: { id : "1", number_of_lines : "6"},
+        2: { id : "2", number_of_lines : "4"},
+        3: { id : "3", number_of_lines : "7"},
+        4: { id : "4", number_of_lines : "9"},
+        5: { id : "5", number_of_lines : "2"},
+        6: { id : "6", number_of_lines : "12"},
+        7: { id : "7", number_of_lines : "5"},
+        8: { id : "8", number_of_lines : "1"}
+    };
     
-    console.log("TicketController...");
+    $scope.goHome = function($path) {
+        $scope.getTickets();
+        console.log($location.path());
+        $location.url($path);
+    }
+
+    $scope.swapViews = function() {
+        $scope.displayTickets = !$scope.displayTickets;
+        $scope.displayLines = !$scope.displayLines;
+    }
+
+    $scope.openTicket = function($ticket) {
+        
+        $scope.swapViews();
+        console.log("Ticket Displayed");
+    }
 }]);
