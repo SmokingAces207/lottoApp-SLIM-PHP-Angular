@@ -9,10 +9,11 @@ require '../../config/db.php';
 
 $app = new \Slim\App([]);
 
-// Ticket Routes
-require 'routes/tickets.php';
 // Status Routes
 #require 'routes/status.php';
+
+// Ticket Routes
+require 'routes/tickets.php';
 
 // Slim Dependency Injection Container
 $container = $app->getContainer();

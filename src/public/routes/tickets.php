@@ -60,7 +60,7 @@ $app->post('/ticket', function (Request $request, Response $response) {
 		}
 
 		$db = null;
-		return '{"notice": {"Response": '.$number_of_lines_to_write.' Tickets Added"}}';
+		return '{"notice": {"Response": '.$number_of_lines_to_write.' Tickets Added yo"}}';
 
 	} catch (PDOException $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';
@@ -150,6 +150,41 @@ $app->put('/ticket/{id}', function (Request $request, Response $response) {
 		return '{"notice": {"text": "Ticket Lines Updated"}}';
 
 	} catch (PDOException $e) {
+		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';
+	}
+});
+
+
+// Get ticket status
+$app->get('/status/{id}', function (Request $request, Response $response) {
+
+	$id = $request->getAttribute('id');
+
+	$sql_get = "SELECT * FROM tickets WHERE id = $id";
+
+	try {
+		// Get DB Object
+		$db = new db();
+		// Connect
+		$db = $db->connect();
+
+		// Get current tick information
+		$stmt = $db->query($sql_get);
+		$ticket = $stmt->fetch(PDO::FETCH_OBJ);
+
+		// Add previous database value with new value
+		$number_of_lines = $number_of_lines + $ticket->number_of_lines;
+
+		// Update current ticket information
+		$stmt = $db->prepare($sql_update);
+		$db = null;
+
+		$stmt->bindParam(':number_of_lines', $number_of_lines);
+		$stmt->execute();
+
+		return '{"notice": {"text": "Ticket Lines Updated"}}';
+
+	} catch (Exception $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';
 	}
 });
