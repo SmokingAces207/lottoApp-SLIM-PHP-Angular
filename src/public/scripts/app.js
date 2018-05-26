@@ -11,9 +11,10 @@ myApp.config(function($routeProvider) {
 			templateUrl : "<h1>TESTING...CREATE A TICKET!!!</h1>",
 			controller : "ticketController"
 		})
-//		.when("/tickets", {
-//			templateUrl : "tickets.html"
-//		})
+		.when("/viewtickets", {
+            templateUrl : "views/tickets.html",
+            controller : "ticketController"
+        })
 		.otherwise({ redirectTo: '/' });   
 });
 
@@ -27,14 +28,14 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
         // });
         $http({
             method: 'POST',
-            url: '../routes/tickets.php',
+            url: '/ticket',
             data: {
-                number_of_lines: $scope.number_of_lines
+                number_of_lines: angular.fromJson($scope.number_of_lines)
             }
         }).then(function (response) {
             $scope.ticket = response;
             console.log("response");
-            console.log($scope.ticket);
+            console.log(response);
         }),function (error) {
             console.log("error");
             console.log(error);
@@ -44,10 +45,10 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
     }
     
     $scope.viewTickets = function() {
+
         $http({
             method: 'GET',
             url: '/ticket'
-            //data: $scope.id
         }).then(function (response) {
             $scope.tickets = response;
             console.log("response");
@@ -61,15 +62,6 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
 
     $scope.viewTickets();
     
-//    $scope.postData = function() {
-//        $http({
-//            method: "POST",
-//            url: "routes/tickets.php",
-//            data: $scope.number_of_lines
-//        }).success(function(data) {
-//            
-//        });
-//    }
 }]);
 
 myApp.controller('ticketController', ['$scope', function ($scope) {
