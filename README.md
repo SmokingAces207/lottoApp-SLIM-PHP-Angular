@@ -1,0 +1,2 @@
+# lottoApp
+Simple lotto application
