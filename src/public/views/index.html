@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp">
+    <head>
+        <title>Introduction to AngularJS</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="styles/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+
+        <header>
+			<nav class="navbar nav-transparent">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">LottoApp</a>
+                    </div>
+                </div>
+			</nav>
+		</header>
+
+        <div class="container">
+
+            <div class="row" ng-controller="mainController">
+                
+			     <div class="col-md-12 col-xs-6">
+                     
+                     <div ng-view></div>
+                     
+                </div>
+                
+            </div>
+
+		</div>
+
+    </body>
+    <footer>
+<!--        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>-->
+        <script type="text/javascript" src="scripts/angular.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
+    </footer>
+</html>

@@ -1,0 +1,9 @@
+<h1>Lotto App</h1>
+<h3>Create a new ticket or view old tickets...
+ <br>Play Lotto - It Could be You!
+</h3>
+
+<h5 ng-if="tickets">{{tickets}}</h5>
+
+<button type="button" class="btn btn-info" ng-click="createNewTicket()">New Ticket</button>
+<button type="button" class="btn btn-info" ng-click="viewTickets()">View Tickets</button>

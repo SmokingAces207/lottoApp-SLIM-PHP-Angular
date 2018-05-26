@@ -1,0 +1,115 @@
+@font-face {
+    font-family: Abril Fatface;
+    src: url(../fonts/AbrilFatface-Regular.otf);
+}
+
+body {
+    width:100%;
+    background: black;
+    font-family: Abril Fatface, serif;
+    font-size: 48px;
+    /* Multi broswer support transparency detail */
+    background-image: -webkit-linear-gradient(top, 
+        rgba(0,0,0,0.35) 20%, 
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%
+      ),
+      -webkit-linear-gradient(left, 
+        rgba(0,0,0,0.9) 0%, 
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.9) 100%
+      ),
+      url("../images/background.jpg");
+
+    background-image: -moz-linear-gradient(top, 
+        rgba(0,0,0,0.35) 20%, 
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%
+      ),
+      -moz-linear-gradient(left, 
+        rgba(0,0,0,0.9) 0%, 
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.9) 100%
+      ),
+      url("../background.jpg");
+
+    background-image: -o-linear-gradient(top, 
+        rgba(0,0,0,0.35) 20%, 
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%
+      ),
+      -o-linear-gradient(left, 
+        rgba(0,0,0,0.9) 0%, 
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.9) 100%
+      ),
+      url("../background.jpg");
+
+    background-image: linear-gradient(top, 
+        rgba(0,0,0,0.35) 20%, 
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%,
+        rgba(0,0,0,0.35) 20%
+      ),
+      linear-gradient(left, 
+        rgba(0,0,0,0.9) 0%, 
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.9) 100%
+      ),
+      url("../background.jpg");
+}
+
+.container {
+    padding-left: 20%;
+}
+
+.row {
+    margin-top:10%;
+}
+
+h1 {
+    color: deepskyblue;
+    width:80%;
+    margin-left: 8%;
+    margin-bottom: 5%;
+    font-size: 1.2em;
+}
+
+h3 {
+    color: white;
+    width:80%;
+    margin-left: 8%;
+    margin-bottom: 5%;
+    line-height: 1.4em;
+}
+
+/*Buttons*/
+.btn-info {
+    font-size: 0.5em;
+}
+
+/*Nav Bar*/
+.navbar-brand {
+    color: white;
+}
+.nav-transparent {
+    background-color: rgba(0,0,0,0.5);
+}
+.navbar-brand:hover {
+    color: lightskyblue;
+}
+
+/*Bootstrap Overrides*/
+.btn-info {
+    width:225px;
+    height:25%;
+    margin-left: 5%;
+    margin-bottom:20px;
+}
