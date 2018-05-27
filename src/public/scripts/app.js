@@ -22,7 +22,8 @@ myApp.config(function($routeProvider) {
 		.otherwise({ redirectTo: '/' });   
 });
 
-myApp.controller('mainController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+myApp.controller('mainController', ['$scope', '$location', 
+    function ($scope, $location) {
     
     $scope.go = function($path) {
         $location.url($path);
@@ -30,7 +31,8 @@ myApp.controller('mainController', ['$scope', '$http', '$location', function ($s
     
 }]);
 
-myApp.controller('createController', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+myApp.controller('createController', ['$scope', '$http', '$location', '$timeout', 
+    function ($scope, $http, $location, $timeout) {
     
     $scope.numberOfLines = 1;
     
@@ -59,14 +61,17 @@ myApp.controller('createController', ['$scope', '$http', '$location', '$timeout'
     
 }]);
 
-myApp.controller('addLinesController', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+myApp.controller('addLinesController', ['$scope', '$rootScope', '$http', '$location', '$timeout', 
+    function ($scope, $rootScope, $http, $location, $timeout) {
     
+    $scope.ticketId = $rootScope.ticket.ID;
+    console.log ($scope.ticketId);
     $scope.numberOfLines = 1;
     
-    $scope.addLines = function($ticket) {
+    $scope.addLines = function() {
         $http({
             method: 'PUT',
-            url: '/ticket' + $ticket.id,
+            url: '/ticket/' + $scope.ticketId,
             data: {
                 number_of_lines: angular.fromJson($scope.numberOfLines)
             }
@@ -88,7 +93,8 @@ myApp.controller('addLinesController', ['$scope', '$http', '$location', '$timeou
     
 }]);
 
-myApp.controller('ticketController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+myApp.controller('ticketController', ['$scope', '$rootScope', '$http', '$location', 
+    function ($scope, $rootScope, $http, $location) {
 
     $scope.displayTickets = true;
     $scope.displayLines = false;
@@ -98,7 +104,14 @@ myApp.controller('ticketController', ['$scope', '$http', '$location', function (
         $location.url($path);
     }
 
+    $scope.addTicketLines = function($ticket) {
+        $rootScope.ticket = $ticket;
+        console.log ($rootScope.ticket);
+        $location.url('/addlines');
+    }
+
     $scope.swapViews = function() {
+        $scope.getTickets();
         $scope.displayTickets = !$scope.displayTickets;
         $scope.displayLines = !$scope.displayLines;
     }

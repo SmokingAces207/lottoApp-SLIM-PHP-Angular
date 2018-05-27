@@ -14,7 +14,7 @@
       <td>{{ticket.ID}}</td>
       <td>{{ticket.number_of_lines}}</td>
       <td><button type="button" class="btn btn-success" ng-click="openTicket(ticket)">View Ticket Lines</button></td>
-      <td ng-if="!ticket.lines[0].result"><button type="button" class="btn btn-info" ng-click="go('/addlines')">Add Ticket Lines</button></td>
+      <td ng-if="!ticket.lines[0].result"><button type="button" class="btn btn-info" ng-click="addTicketLines(ticket)">Add Ticket Lines</button></td>
       <td ng-if="ticket.lines[0].result">Results Printed</td>
     </tr>
   </tbody>
