@@ -1,0 +1,15 @@
+<div class="home">
+
+	<form>
+		<div>
+			<label for="numberOfLinesInput" style="color:white">How many ticket lines do you want to add?</label>
+			<input type="number" class="form-control input" id="numberOfLinesInput" ng-model="numberOfLines"></div>
+		</div>
+		<button id="" type="submit" class="btn btn-info float-right" style="margin-top:15px;margin-left:10px;padding:15px;" ng-click="addLines(ticket)">Create Ticket</button>
+		<button id="" type="submit" class="btn btn-info float-right" style="margin-top:15px;padding:15px;" ng-click="go('/viewtickets')">Back</button>
+	</form>
+	<div ng-if="message" class="alert alert-success" style="margin-top:75px;" role="alert">
+	  {{message}}
+	</div>
+
+</div>

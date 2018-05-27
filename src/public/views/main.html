@@ -5,10 +5,8 @@
 	 <br>Play Lotto - It Could be You!
 	</h3>
 
-	<h5 ng-if="tickets">{{tickets}}</h5>
-
-	<button id="main_btn" type="button" class="btn btn-info" ng-click="createNewTicket()">New Ticket</button>
-	<button id="main_btn" type="button" class="btn btn-info" ng-click="viewTickets('/viewtickets')">View Tickets</button>
+	<button id="main_btn" type="button" class="btn btn-info" ng-click="go('/createticket')">New Ticket</button>
+	<button id="main_btn" type="button" class="btn btn-info" ng-click="go('/viewtickets')">View Tickets</button>
 
 </div>
 

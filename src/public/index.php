@@ -44,7 +44,7 @@ $app->get('/', function (Request $request, Response $response) {
 										num1 int NOT NULL,
 										num2 int NOT NULL,
 										num3 int NOT NULL,
-										result int NOT NULL,
+										result int,
 										PRIMARY KEY (ID)
 									)";
 

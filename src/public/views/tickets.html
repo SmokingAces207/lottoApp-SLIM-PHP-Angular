@@ -6,13 +6,16 @@
       <th scope="col">#ID</th>
       <th scope="col">Number of Lines</th>
       <th scope="col">View Ticket</th>
+      <th scope="col">Add Ticket Lines</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="ticket in tickets">
+    <tr ng-repeat="ticket in tickets track by $index">
       <td>{{ticket.ID}}</td>
       <td>{{ticket.number_of_lines}}</td>
-      <td><button type="button" class="btn btn-success" ng-click="openTicket(ticket)">View</button></td>
+      <td><button type="button" class="btn btn-success" ng-click="openTicket(ticket)">View Ticket Lines</button></td>
+      <td ng-if="!ticket.lines[0].result"><button type="button" class="btn btn-info" ng-click="go('/addlines')">Add Ticket Lines</button></td>
+      <td ng-if="ticket.lines[0].result">Results Printed</td>
     </tr>
   </tbody>
 </table>
@@ -20,7 +23,7 @@
 <table class="table" ng-if="displayLines">
   <thead class="">
     <tr>
-      <th scope="col">#ID</th>
+      <th scope="col">Line Number</th>
       <th scope="col">Number One</th>
       <th scope="col">Number Two</th>
       <th scope="col">Number Three</th>
@@ -28,16 +31,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="ticket in tickets">
-      <td>{{ticket.id}}</td>
-      <td>{{ticket.id}}</td>
-      <td>{{ticket.id}}</td>
-      <td>{{ticket.id}}</td>
+    <tr ng-repeat="line in ticketLines track by $index">
+      <td>{{$index+1}}</td>
+      <td>{{line.num1}}</td>
+      <td>{{line.num2}}</td>
+      <td>{{line.num3}}</td>
       <td ng-if="line.result">{{line.result}}</td>
-      <td ng-if="!line.result"><button type="button" class="btn btn-success" ng-click="">Get Result</button></td>
+      <td ng-if="!line.result"><button type="button" class="btn btn-success" ng-click="getResult(line.ticket_id)">Get Result</button></td>
     </tr>
   </tbody>
 </table>
 
-<button id="" type="button" ng-if="displayTickets" class="btn btn-info float-right" ng-click="goHome('/')">Back</button>
+<button id="" type="button" ng-if="displayTickets" class="btn btn-info float-right" ng-click="go('/')">Back To Main Screen</button>
 <button id="" type="button" ng-if="displayLines" class="btn btn-info float-right" ng-click="swapViews()">Back</button>

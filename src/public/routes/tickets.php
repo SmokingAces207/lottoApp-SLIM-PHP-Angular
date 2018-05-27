@@ -36,7 +36,6 @@ $app->post('/ticket', function (Request $request, Response $response) {
 		$number_of_lines_to_write = $ticket->number_of_lines;
 
 		// $this->logger->addInfo('number_of_lines: ' + $number_of_lines_to_write);
-
 		// $this->logger->addInfo('Executed this far...');
 		// $this->logger->addInfo('ticket_id: ' + (int)$number_of_lines);
 		// $this->logger->addInfo('ticket_id: ' + (int)$ticket_id);
@@ -60,7 +59,7 @@ $app->post('/ticket', function (Request $request, Response $response) {
 		}
 
 		$db = null;
-		return '{"notice": {"Response": "Ticket with'.$number_of_lines_to_write.' number of lines added"}}';
+		return '{"notice": "Ticket with '.$number_of_lines_to_write.' number of lines created"}';
 
 	} catch (PDOException $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';
@@ -72,7 +71,8 @@ $app->post('/ticket', function (Request $request, Response $response) {
 // Get All Tickets
 $app->get('/ticket', function (Request $request, Response $response) {
 
-	$sql = "SELECT * FROM tickets ORDER BY id";
+	$sql_get_tickets = "SELECT * FROM tickets ORDER BY id";
+	$sql_get_ticket_lines = "SELECT * FROM ticket_lines ORDER BY id";
 
 	try {
 		// Get DB Object
@@ -81,10 +81,21 @@ $app->get('/ticket', function (Request $request, Response $response) {
 		$db = $db->connect();
 
 		// Creating a statement here is unecessary but it allows us to resuse it again, and means it is only parsed once.
-		$stmt = $db->query($sql);
+		$stmt = $db->query($sql_get_tickets);
 		$tickets = $stmt->fetchAll(PDO::FETCH_OBJ);
 
+		$stmt = $db->query($sql_get_ticket_lines);
+		$ticket_lines = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 		$db = null;
+		foreach ($tickets as $ticket) {
+			$ticket->lines = [];
+			foreach ($ticket_lines as $line) {
+				if ($ticket->ID == $line->ticket_id) {
+					array_push($ticket->lines, $line);
+				}
+			}
+		}
 		return  json_encode($tickets);
 
 	} catch (PDOException $e) {
@@ -168,7 +179,7 @@ $app->put('/ticket/{id}', function (Request $request, Response $response) {
 		}
 
 		$db = null;
-		return '{"notice": {"text": "Ticket Lines Updated"}}';
+		return '{"notice": "Ticket Lines Updated"}';
 
 	} catch (PDOException $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';
@@ -180,6 +191,7 @@ $app->put('/ticket/{id}', function (Request $request, Response $response) {
 $app->get('/status/{id}', function (Request $request, Response $response) {
 
 	$id = $request->getAttribute('id');
+	// $this->logger->addInfo($id);
 
 	$sql_get_lines = "SELECT * FROM ticket_lines WHERE ticket_id = $id";
 
@@ -192,6 +204,7 @@ $app->get('/status/{id}', function (Request $request, Response $response) {
 		// Get current tick information
 		$stmt = $db->query($sql_get_lines);
 		$ticket_lines = $stmt->fetchAll(PDO::FETCH_OBJ);
+		// $this->logger->addInfo($ticket_lines);
 
 		// Check line values and calculate our result per given line
 		foreach ($ticket_lines as $line) {
@@ -216,10 +229,14 @@ $app->get('/status/{id}', function (Request $request, Response $response) {
 
 			$stmt = $db->prepare($sql_update_line);
 			$stmt->execute();
+
+			// We have to get lines again now with updated information
+			$stmt = $db->query($sql_get_lines);
+			$ticket_lines = $stmt->fetchAll(PDO::FETCH_OBJ);
 		}
 
 		$db = null;
-		return '{"notice": {"text": "Status Updated"}}';
+		return json_encode($ticket_lines);
 
 	} catch (PDOException $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';

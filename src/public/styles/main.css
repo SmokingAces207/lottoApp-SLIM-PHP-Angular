@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Abril Fatface;
-    src: url(../fonts/AbrilFatface-Regular.otf);
+  font-family: Abril Fatface;
+  src: url(../fonts/AbrilFatface-Regular.otf);
 }
 
 .home {
@@ -8,114 +8,118 @@
 }
 
 body {
-    width:100%;
-    background: black;
-    font-family: Abril Fatface, serif;
+  width:100%;
+  background: black;
+  font-family: Abril Fatface, serif;
 
-    /* Multi broswer support transparency detail */
-    background-image: -webkit-linear-gradient(top, 
-        rgba(0,0,0,0.35) 20%, 
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%
-      ),
-      -webkit-linear-gradient(left, 
-        rgba(0,0,0,0.9) 0%, 
-        rgba(0,0,0,0) 20%,
-        rgba(0,0,0,0) 80%,
-        rgba(0,0,0,0.9) 100%
-      ),
-      url("../images/background.jpg");
+  /* Multi broswer support transparency detail */
+  background-image: -webkit-linear-gradient(top, 
+      rgba(0,0,0,0.5) 20%, 
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%
+    ),
+    -webkit-linear-gradient(left, 
+      rgba(0,0,0,0.9) 0%, 
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 80%,
+      rgba(0,0,0,0.9) 100%
+    ),
+    url("../images/background.jpg");
 
-    background-image: -moz-linear-gradient(top, 
-        rgba(0,0,0,0.35) 20%, 
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%
-      ),
-      -moz-linear-gradient(left, 
-        rgba(0,0,0,0.9) 0%, 
-        rgba(0,0,0,0) 20%,
-        rgba(0,0,0,0) 80%,
-        rgba(0,0,0,0.9) 100%
-      ),
-      url("../background.jpg");
+  background-image: -moz-linear-gradient(top, 
+      rgba(0,0,0,0.5) 20%, 
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%
+    ),
+    -moz-linear-gradient(left, 
+      rgba(0,0,0,0.9) 0%, 
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 80%,
+      rgba(0,0,0,0.9) 100%
+    ),
+    url("../background.jpg");
 
-    background-image: -o-linear-gradient(top, 
-        rgba(0,0,0,0.35) 20%, 
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%
-      ),
-      -o-linear-gradient(left, 
-        rgba(0,0,0,0.9) 0%, 
-        rgba(0,0,0,0) 20%,
-        rgba(0,0,0,0) 80%,
-        rgba(0,0,0,0.9) 100%
-      ),
-      url("../background.jpg");
+  background-image: -o-linear-gradient(top, 
+      rgba(0,0,0,0.5) 20%, 
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%
+    ),
+    -o-linear-gradient(left, 
+      rgba(0,0,0,0.9) 0%, 
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 80%,
+      rgba(0,0,0,0.9) 100%
+    ),
+    url("../background.jpg");
 
-    background-image: linear-gradient(top, 
-        rgba(0,0,0,0.35) 20%, 
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%,
-        rgba(0,0,0,0.35) 20%
-      ),
-      linear-gradient(left, 
-        rgba(0,0,0,0.9) 0%, 
-        rgba(0,0,0,0) 20%,
-        rgba(0,0,0,0) 80%,
-        rgba(0,0,0,0.9) 100%
-      ),
-      url("../background.jpg");
+  background-image: linear-gradient(top, 
+      rgba(0,0,0,0.5) 20%, 
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%,
+      rgba(0,0,0,0.5) 20%
+    ),
+    linear-gradient(left, 
+      rgba(0,0,0,0.9) 0%, 
+      rgba(0,0,0,0) 20%,
+      rgba(0,0,0,0) 80%,
+      rgba(0,0,0,0.9) 100%
+    ),
+    url("../background.jpg");
 }
 
 .container {
-    padding-left: 12%;
+  padding-left: 12%;
 }
 
 .row {
-    margin-top:10%;
+  margin-top:10%;
 }
 
 #main_h1 {
-    color: deepskyblue;
-    width:80%;
-    margin-left: 8%;
-    margin-bottom: 5%;
-    font-size: 1.2em;
+  color: #17a2b8;
+  width:80%;
+  margin-left: 8%;
+  margin-bottom: 5%;
+  font-size: 1.2em;
 }
 
 #main_h3 {
-    color: white;
-    width:80%;
-    margin-left: 8%;
-    margin-bottom: 5%;
-    line-height: 1.4em;
+  color: white;
+  width:80%;
+  margin-left: 8%;
+  margin-bottom: 5%;
+  line-height: 1.4em;
 }
 
 /*Buttons*/
 #main_btn.btn-info {
-    font-size: 0.5em;
-    width:225px;
-    height:25%;
-    margin-left: 5%;
-    margin-bottom:20px;
+  font-size: 0.5em;
+  width:225px;
+  height:25%;
+  margin-left: 5%;
+  margin-bottom:20px;
 }
 
 /*Nav Bar*/
 .navbar-brand {
-    color: white;
+  color: white;
 }
 .nav-transparent {
-    background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.5);
 }
 .navbar-brand:hover {
-    color: lightskyblue;
+  color: lightskyblue;
 }
 
 /*Table styles*/
 .table {
   font-family: 'arial';
   color: white;
+}
+
+.input {
+  font-family: 'arial';
 }
