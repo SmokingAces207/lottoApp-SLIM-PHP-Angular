@@ -35,7 +35,7 @@ $app->post('/ticket', function (Request $request, Response $response) {
 		// Get number_of_lines from new database object
 		$number_of_lines_to_write = $ticket->number_of_lines;
 
-		$this->logger->addInfo('number_of_lines: ' + $number_of_lines_to_write);
+		// $this->logger->addInfo('number_of_lines: ' + $number_of_lines_to_write);
 
 		// $this->logger->addInfo('Executed this far...');
 		// $this->logger->addInfo('ticket_id: ' + (int)$number_of_lines);
@@ -60,7 +60,7 @@ $app->post('/ticket', function (Request $request, Response $response) {
 		}
 
 		$db = null;
-		return '{"notice": {"Response": '.$number_of_lines_to_write.' Tickets Added yo"}}';
+		return '{"notice": {"Response": "Ticket with'.$number_of_lines_to_write.' number of lines added"}}';
 
 	} catch (PDOException $e) {
 		return '{"error": {"error": '.$e->getMessage().' {"line": '.$e->getLine().'}}';

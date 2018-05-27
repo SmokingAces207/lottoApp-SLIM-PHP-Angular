@@ -18,14 +18,11 @@ myApp.config(function($routeProvider) {
 		.otherwise({ redirectTo: '/' });   
 });
 
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$location', function ($scope, $filter, $http, $location) {
+myApp.controller('mainController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     
     $scope.number_of_lines = 6;
     
     $scope.createNewTicket = function() {
-        // $http.get("tickets.php").then(function(response) {
-        //     $scope.data = response.data;
-        // });
         $http({
             method: 'POST',
             url: '/ticket',
@@ -34,55 +31,22 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$location'
             }
         }).then(function (response) {
             $scope.ticket = response;
-            console.log("response");
             console.log(response);
         }),function (error) {
-            console.log("error");
             console.log(error);
         }
-        console.log("create ticket");
-        console.log($scope.data);
-    }
-
-    $scope.getTickets = function() {
-
-        $http({
-            method: 'GET',
-            url: '/ticket'
-        }).then(function (response) {
-            $scope.tickets = response;
-            console.log("response");
-            console.log($scope.tickets);
-        }),function (error) {
-            console.log("error");
-            console.log(error);
-        }
-        console.log("view tickets");
     }
     
     $scope.viewTickets = function($path) {
-        $scope.getTickets();
-        console.log($location.path());
         $location.url($path);
     }
     
 }]);
 
-myApp.controller('ticketController', ['$scope', '$location', function ($scope, $location) {
+myApp.controller('ticketController', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
     $scope.displayTickets = true;
     $scope.displayLines = false;
-
-    $scope.tickets = {
-        1: { id : "1", number_of_lines : "6"},
-        2: { id : "2", number_of_lines : "4"},
-        3: { id : "3", number_of_lines : "7"},
-        4: { id : "4", number_of_lines : "9"},
-        5: { id : "5", number_of_lines : "2"},
-        6: { id : "6", number_of_lines : "12"},
-        7: { id : "7", number_of_lines : "5"},
-        8: { id : "8", number_of_lines : "1"}
-    };
     
     $scope.goHome = function($path) {
         $scope.getTickets();
@@ -95,9 +59,24 @@ myApp.controller('ticketController', ['$scope', '$location', function ($scope, $
         $scope.displayLines = !$scope.displayLines;
     }
 
+    $scope.getTickets = function() {
+        $http({
+            method: 'GET',
+            url: '/ticket'
+        }).then(function (response) {
+            $scope.tickets = response.data;
+            console.log(response);
+        }),function (error) {
+            console.log(error);
+        }
+    }
+
     $scope.openTicket = function($ticket) {
         
         $scope.swapViews();
+        console.log($ticket);
         console.log("Ticket Displayed");
     }
+
+    $scope.getTickets();
 }]);
